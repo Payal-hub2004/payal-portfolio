@@ -262,6 +262,17 @@ const certificates = [
     description: 'Completed a two-month course at Christ University focused on cloud computing concepts and the journey from foundational principles to deployment. The course broadened my understanding of cloud technologies and their role in modern computing infrastructure.',
     textOnly: true,
   },
+  {
+    id: 'agentic-ai-workshop',
+    title: 'Agentic AI Workshop',
+    year: '2026',
+    provider: 'World Technocon in association with Techzephyr 4.0, IIT Bhubaneswar',
+    pdf: '/certificates/agentic-ai-workshop.pdf',
+    openPdfInNewTab: true,
+    previewTitle: 'AGENTIC AI',
+    previewSubtitle: 'WORKSHOP',
+    description: '18 October 2026 · 1 Day (7 Hours) · Indian Institute of Technology (IIT) Bhubaneswar',
+  },
 ];
 
 const researchMethodology = [
@@ -955,7 +966,10 @@ function App() {
                   <div className="certificate-card-content">
                     <div className="certificate-card-meta"><span>{certificate.provider}</span><span>{certificate.year}</span></div>
                     <h3>{certificate.title}</h3>
-                    {certificate.openImageInNewTab
+                    {certificate.description && <p className="certificate-card-description">{certificate.description}</p>}
+                    {certificate.openPdfInNewTab
+                      ? <a className="certificate-view-button" href={certificate.pdf} target="_blank" rel="noopener noreferrer">View Certificate <span aria-hidden="true">→</span></a>
+                      : certificate.openImageInNewTab
                       ? <a className="certificate-view-button" href={certificate.image} target="_blank" rel="noopener noreferrer">View Certificate <span aria-hidden="true">→</span></a>
                       : <button className="certificate-view-button" type="button" onClick={() => setSelectedCertificate(certificate)}>
                         View Certificate <span aria-hidden="true">→</span>
